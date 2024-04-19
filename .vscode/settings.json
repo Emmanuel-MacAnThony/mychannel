@@ -1,0 +1,17 @@
+{
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "119"
+    ],
+    "[python]": {
+        // "diffEditor.ignoreTrimWhitespace": false,
+        // "editor.formatOnType": true,
+        // "editor.wordBasedSuggestions": "off",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        }
+    }
+}
