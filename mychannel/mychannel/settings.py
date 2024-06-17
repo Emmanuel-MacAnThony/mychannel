@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # third party apps
    'rest_framework',
    'drf_spectacular',
+   'corsheaders',
     # project app
     "server",
     "accounts"
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -150,3 +152,10 @@ MEDIA_URL = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL="accounts.Account"
+
+
+CORS_ALLOWED_ORIGINS = [
+    
+    "http://localhost:5173",
+  
+]

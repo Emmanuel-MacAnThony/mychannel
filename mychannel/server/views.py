@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Server
-from .serializer import ServerSerializer
+from .models import Server, Category
+from .serializer import ServerSerializer, CategorySerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
 from django.db.models import Count
@@ -12,6 +12,7 @@ class ServerListViewSet(viewsets.ViewSet):
     queryset = Server.objects.all()
     
     def list(self, request):
+    
         category = request.query_params.get("category")
         qty = request.query_params.get("qty")
         by_user = request.query_params.get("by_user") == "true"
@@ -46,5 +47,12 @@ class ServerListViewSet(viewsets.ViewSet):
         serializer = ServerSerializer(self.queryset, many=True, context={"num_members":with_num_members})
         return Response(data=serializer.data)
         
+class CategoryListViewSet(viewsets.ViewSet):
+    
+    queryset = Category.objects.all()
+    
+    def list(self, request):
+        serializer = CategorySerializer(self.queryset, many=True)
+        return Response(serializer.data)
         
         
